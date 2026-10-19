@@ -1,5 +1,6 @@
 {
   "_comment": "Shared by scripts/update_data.py (which programs to track) and the web page (default highlighting). Patterns are case-insensitive regular expressions that work in both Python and JavaScript. Edit, commit, and the next scheduled update picks them up.",
+  "_comment_zh": "scripts/update_data.py（决定跟踪哪些项目）和网页（默认高亮）共用此文件。patterns 是不区分大小写的正则表达式，Python 和 JavaScript 通用。修改并提交后，下一次定时更新即生效。",
   "z_threshold": 4,
   "topics": [
     {
@@ -106,6 +107,7 @@
   "watch_programs": [],
   "track": {
     "_comment": "Visit windows are fetched for programs that match LRD/AGN/High-z (score >= min_score) from these cycles, plus watch_programs.",
+    "_comment_zh": "对这些 Cycle 中匹配 LRD/AGN/High-z（得分 ≥ min_score）的项目，以及 watch_programs 里的项目，抓取 visit 窗口。",
     "min_score": 2,
     "min_cycle": 3
   },

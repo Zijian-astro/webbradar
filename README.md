@@ -1,95 +1,95 @@
 # WebbRadar
 
-**JWST 现在在观测什么，以及接下来哪些和你方向相关的观测、数据公开值得关注。**
-默认关注高红移星系、AGN / 黑洞和 Little Red Dots (LRD)。
+**English** · [简体中文](README.zh-CN.md)
 
-轻量静态网页（纯 HTML/CSS/JS，无框架、无构建）加一个零依赖的 Python 抓取脚本。可以部署到 GitHub Pages，每 6 小时自动更新。
+**What JWST is observing right now, and which upcoming observations and data releases matter for your science.**
+Out of the box it follows high-redshift galaxies, AGN / black holes and Little Red Dots (LRDs).
 
-在线地址：<https://zijian-astro.github.io/webbradar/>
+A lightweight static page (plain HTML/CSS/JS, no framework, no build step) plus a dependency-free Python fetcher. It is deployed on GitHub Pages and refreshes itself every 6 hours.
 
-*What JWST is observing right now, plus upcoming observations and public data releases for high-z galaxies, AGN and LRDs.*
+Live site: <https://zijian-astro.github.io/webbradar/>
 
-## 功能
+## Features
 
-- **Observing now**：根据 STScI 每周观测排程实时显示正在执行的 visit，包括项目、PI、仪器/模式、目标、并行观测、进度条和倒计时，以及接下来的 visits。另外会提示“下一个与你相关的观测”。
+- **Observing now**: the visit JWST is executing according to the STScI weekly schedule, with program, PI, instrument/mode, target, parallels, a live progress bar and countdown, and the visits that follow. It also points out the next observation that matches your interests.
 - **For you**
-  - 本周排程中与你兴趣相关的观测
-  - 未来 30 / 90 / 180 天的 plan windows（Flight Ready / Implementation，来自 STScI visit status，按项目合并）
-  - 最近 3 周刚观测完的项目，并按 EAP 估算数据公开时间
-  - MAST 上即将公开、最近公开的数据（按项目合并）
-  - ★ 关注的项目单独置顶
-- **Schedule**：4 周时间轴（按仪器着色，相关观测在上方标色）和可搜索的排程表，可按仪器筛选、只看相关、显示定标观测
-- **Releases**：全部 JWST level-3 产品的公开日期（默认只看相关）
-- **Programs**：被跟踪的约 230 个项目（Cycle ≥ 3 且匹配 LRD / AGN / High-z），显示执行进度、下一个窗口、数据公开日
-- 点击任一项目可打开详情（PI/Co-PI、EAP、visit 状态、窗口列表、MAST 公开批次），附 STScI 项目页、visit status、proposal PDF 和 MAST 链接
-- 浏览器内自定义关键词（正则）和权重、UTC / 本地时间切换、深浅色、导出 `.ics` 日历
+  - visits in this week's schedule that match your interests
+  - plan windows in the next 30 / 90 / 180 days (Flight Ready / Implementation, from STScI visit status), merged per program
+  - programs observed in the last three weeks, with the expected public date from their exclusive access period (EAP)
+  - MAST data going public soon or released recently, merged per program
+  - ★ watched programs pinned to the top
+- **Schedule**: a four-week timeline (coloured by instrument, with matches marked above the blocks) and a searchable table with instrument, interest and calibration filters
+- **Releases**: public release dates of all JWST level-3 products (only your interests by default)
+- **Programs**: about 230 tracked programs (Cycle ≥ 3, matching LRD / AGN / high-z) with execution progress, next window and next release
+- Click any program to see its details (PI/Co-PIs, EAP, visit status, windows, MAST release batches) and links to the STScI program page, visit status, proposal PDF and MAST
+- Edit keywords (regular expressions) and weights in the browser, switch between UTC and local time, light and dark themes, and export a calendar (`.ics`)
 
-## 数据来源
+## Data sources
 
-| 内容 | 来源 | 刷新频率 |
+| Content | Source | Refresh |
 |---|---|---|
-| 每周观测排程 | [STScI observing schedules](https://www.stsci.edu/jwst/science-execution/observing-schedules)（文本表格） | 每次运行（STScI 一般周五发布下一周） |
-| 项目标题 / PI / Cycle / 类别 / EAP | [approved programs](https://www.stsci.edu/jwst/science-execution/approved-programs) 列表（GO 各 Cycle、GTO、DDT、联合项目、定标）和 program information 页 | 列表每 7 天，单页每 30 天 |
-| Visit 状态与 plan windows | `jwst-program-info/visits` XML | 每个项目约每 20 小时 |
-| 数据公开日期 | [MAST API](https://mast.stsci.edu/api/v0/)（`t_obs_release`，calib_level 3，science） | 每次运行 |
+| Weekly observing schedule | [STScI observing schedules](https://www.stsci.edu/jwst/science-execution/observing-schedules) (text tables) | every run (STScI usually posts the next week on Friday) |
+| Program title / PI / cycle / category / EAP | [approved programs](https://www.stsci.edu/jwst/science-execution/approved-programs) lists (GO by cycle, GTO, DDT, joint programs, calibration) and program information pages | lists every 7 days, single pages every 30 days |
+| Visit status and plan windows | `jwst-program-info/visits` XML | about every 20 hours per program |
+| Public release dates | [MAST API](https://mast.stsci.edu/api/v0/) (`t_obs_release`, calib_level 3, science) | every run |
 
-注意事项：
+Caveats:
 
-- 排程是计划，可能因 ToO、故障等发生变化。
-- plan window 是规划窗口，不是确定时间。
-- MAST 的公开日期等于 EAP 到期日，也可能调整。
-- 本工具与 STScI / NASA 无关。
+- The schedule is a plan; ToOs and anomalies can change it.
+- Plan windows are planning windows, not scheduled times.
+- MAST release dates are the end of the EAP and can change.
+- Not affiliated with STScI or NASA.
 
-## 本地运行
+## Run locally
 
 ```bash
 python3 scripts/update_data.py
 ```
 
-首次运行约 3 分钟，之后有缓存，大约 1 分钟。然后在本目录里启动本地服务器（`--bind 127.0.0.1` 让它只对本机可见）：
+The first run takes about 3 minutes; later runs use the cache and take about a minute. Then start a local server from the project folder (`--bind 127.0.0.1` keeps it visible to your computer only):
 
 ```bash
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-打开 <http://localhost:8000>。注意：
+Open <http://localhost:8000>. Notes:
 
-- 一定要在项目目录里运行。如果在主目录（`~`）里运行，会把整个主目录共享出去。
-- 直接双击 `index.html` 不行，浏览器不允许从 `file://` 读取 JSON。
+- Run it inside the project folder. Started from your home folder (`~`), it would share your whole home directory.
+- Opening `index.html` directly does not work: browsers block reading JSON from `file://`.
 
-## 部署到 GitHub Pages（自动更新）
+## Deploy your own copy (GitHub Pages)
 
-1. 新建一个 GitHub 仓库（例如 `webbradar`），把本目录推上去。
-2. 仓库 **Settings → Pages → Build and deployment → Source** 选 **GitHub Actions**。
-3. **Actions → Update data & deploy → Run workflow** 手动跑一次，之后每 6 小时自动运行。
-4. 访问 `https://<用户名>.github.io/<仓库名>/`。
+1. Fork this repository, or push this folder to a new public repository.
+2. In the repository, go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**.
+3. Push to `main`, or run **Actions → Update data & deploy → Run workflow** once. After that it runs every 6 hours.
+4. Visit `https://<user>.github.io/<repository>/`.
 
-工作流会把新数据提交回 `data/`。这样做也能防止 GitHub 因仓库 60 天无活动而停用定时任务。
+The workflow commits fresh data back to `data/`. This also keeps GitHub from disabling the scheduled workflow after 60 days without repository activity.
 
-## 自定义关注方向
+## Customize your interests
 
-编辑 `config/interests.json`，网页和抓取脚本共用这一份配置：
+Edit `config/interests.json`; the page and the fetcher share this one file:
 
-- `topics`：每个主题的正则（不区分大小写）、权重，以及直接算作该主题的 STScI 科学类别（`categories`）或需要排除的类别（`exclude_categories`）
-- `z_threshold`：标题里出现 “z > N”、“z~N”、“6 < z < 9”、“GN-z11” 等时，N 至少多少算高红移（默认 4）
-- `watch_programs`：额外跟踪的项目号，服务器会抓取它们的 visit 窗口
-- `track.min_cycle` / `track.min_score`：哪些项目会被抓取 visit status
-- `fields`：深场位置（RA/Dec/半径）和目标名关键词，用来给项目和数据打 GOODS-S / COSMOS / UDS / Abell 2744 等标签
+- `topics`: case-insensitive regular expressions and a weight for each topic, plus STScI science categories that count directly (`categories`) or are excluded (`exclude_categories`)
+- `z_threshold`: when a title mentions "z > N", "z~N", "6 < z < 9", "GN-z11" and so on, N must reach this value to count as high-z (default 4)
+- `watch_programs`: extra program IDs whose visit windows the fetcher follows
+- `track.min_cycle` / `track.min_score`: which programs get their visit status fetched
+- `fields`: deep-field positions (RA/Dec/radius) and target-name keywords, used to tag programs and data with GOODS-S, COSMOS, UDS, Abell 2744 and so on
 
-相关性打分：LRD 3、AGN/BH 2、High-z 2、Deep field 1，★ 关注 +5。总分 ≥ 2 即视为“我的兴趣”。
+Relevance score: LRD 3, AGN/BH 2, high-z 2, deep field 1, ★ watched +5. A total of 2 or more counts as "my interests".
 
-网页右上角的设置按钮可以在浏览器里临时调整关键词和权重，只影响高亮与筛选，保存在本地浏览器。
+The settings button at the top right adjusts keywords and weights in your browser. It only changes highlighting and filters, and is stored locally.
 
-## 文件结构
+## Files
 
 ```
-index.html               页面
-assets/app.js            渲染、相关性打分（与 Python 规则一致）、日历导出
-assets/style.css         样式（深/浅色）
-config/interests.json    关注方向配置（网页与脚本共用）
-scripts/update_data.py   抓取 STScI / MAST 并生成 data/*.json（仅标准库）
-data/*.json              生成的数据；data/cache/ 为抓取缓存（不发布到网页）
-.github/workflows/       每 6 小时抓取并部署到 GitHub Pages
+index.html               the page
+assets/app.js            rendering, relevance scoring (same rules as the Python), calendar export
+assets/style.css         styles (light / dark)
+config/interests.json    interests, shared by the page and the fetcher
+scripts/update_data.py   fetches STScI / MAST into data/*.json (standard library only)
+data/*.json              generated data; data/cache/ holds fetch caches (not published)
+.github/workflows/       fetches every 6 hours and deploys to GitHub Pages
 ```
 
-界面风格参考了 [lmytime.com/software](https://lmytime.com/software) 上的 JWST 工具（MSAtlas、iNRS 等）。
+The design follows the JWST tools on [lmytime.com/software](https://lmytime.com/software) (MSAtlas, iNRS and others).
