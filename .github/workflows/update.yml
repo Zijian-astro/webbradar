@@ -5,8 +5,7 @@ on:
     - cron: "17 */6 * * *"   # every 6 hours (UTC)
   workflow_dispatch:
   push:
-    branches: [main]
-    paths-ignore: ["data/**"]
+    branches: [main]   # data commits made by this workflow use GITHUB_TOKEN and do not re-trigger it
 
 permissions:
   contents: write   # commit refreshed data (also keeps the scheduled workflow from being disabled for inactivity)

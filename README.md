@@ -5,6 +5,8 @@
 
 轻量静态网页（纯 HTML/CSS/JS，无框架、无构建）加一个零依赖的 Python 抓取脚本。可以部署到 GitHub Pages，每 6 小时自动更新。
 
+在线地址：<https://zijian-astro.github.io/webbradar/>
+
 *What JWST is observing right now, plus upcoming observations and public data releases for high-z galaxies, AGN and LRDs.*
 
 ## 功能
@@ -44,13 +46,16 @@
 python3 scripts/update_data.py
 ```
 
-首次运行约 3 分钟，之后有缓存，大约 1 分钟。然后启动本地服务器：
+首次运行约 3 分钟，之后有缓存，大约 1 分钟。然后在本目录里启动本地服务器（`--bind 127.0.0.1` 让它只对本机可见）：
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-打开 <http://localhost:8000>。注意：直接双击 `index.html` 不行，浏览器不允许从 `file://` 读取 JSON。
+打开 <http://localhost:8000>。注意：
+
+- 一定要在项目目录里运行。如果在主目录（`~`）里运行，会把整个主目录共享出去。
+- 直接双击 `index.html` 不行，浏览器不允许从 `file://` 读取 JSON。
 
 ## 部署到 GitHub Pages（自动更新）
 
