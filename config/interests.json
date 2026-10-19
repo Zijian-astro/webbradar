@@ -1,0 +1,132 @@
+{
+  "_comment": "Shared by scripts/update_data.py (which programs to track) and the web page (default highlighting). Patterns are case-insensitive regular expressions that work in both Python and JavaScript. Edit, commit, and the next scheduled update picks them up.",
+  "z_threshold": 4,
+  "topics": [
+    {
+      "key": "lrd",
+      "label": "LRD",
+      "weight": 3,
+      "patterns": [
+        "little\\s*red\\s*dots?",
+        "\\bLRDs?\\b",
+        "black[\\s-]*hole[\\s-]*stars?",
+        "\\bBH\\*",
+        "v[\\s-]*shaped\\s+(sed|spectr)",
+        "compact\\s+red\\s+(sources|objects|galaxies)"
+      ],
+      "categories": []
+    },
+    {
+      "key": "agn",
+      "label": "AGN / BH",
+      "weight": 2,
+      "patterns": [
+        "\\bAGNs?\\b",
+        "active\\s+galactic",
+        "super[\\s-]*massive\\s+black",
+        "\\bSMBHs?\\b",
+        "quasars?",
+        "\\bQSOs?\\b",
+        "broad[\\s-]*lines?d?\\s+(agns?|regions?|emitters?|quasars?|seyferts?|balmer|h\\s?(alpha|a|α|beta|b|β))",
+        "\\bBL[\\s-]?AGNs?\\b",
+        "\\bBLRs?\\b",
+        "(massive|central|accreting|growing|primeval|primordial|seed|direct[\\s-]*collapse|first|heavy|over[\\s-]*massive|nuclear|dormant|recoiling|wandering|early|distant)\\s+black\\s+holes?",
+        "black\\s+holes?\\s+(growth|mass(es)?|seeds?|accretion|feedback|populations?|demographics|hosts?|activity|stars?)",
+        "early\\s+BHs?\\b",
+        "\\bIMBHs?\\b",
+        "intermediate[\\s-]*mass\\s+black",
+        "seyferts?",
+        "tidal\\s+disruption",
+        "\\bTDEs?\\b"
+      ],
+      "categories": [
+        "Supermassive Black Holes and Active Galaxies"
+      ],
+      "exclude_categories": [
+        "Stellar Physics and Stellar Types",
+        "Stars and Stellar Populations",
+        "Stellar Populations and the Interstellar Medium",
+        "Exoplanets and Exoplanet Formation",
+        "Exoplanet Atmospheres and Habitability",
+        "Exoplanet System Formation and Dynamics",
+        "Exoplanetary System Formation and Dynamics",
+        "Solar System Astronomy",
+        "Gas, Dust, and the ISM"
+      ]
+    },
+    {
+      "key": "hiz",
+      "label": "High-z",
+      "weight": 2,
+      "patterns": [
+        "high[\\s-]*redshift",
+        "\\bhigh[\\s-]*z\\b",
+        "reioni[sz]",
+        "cosmic\\s+dawn",
+        "first\\s+(galaxies|stars|quasars|billion|gigayear|gyr|light)",
+        "early\\s+universe",
+        "distant\\s+universe",
+        "pop(ulation)?\\s*III",
+        "lyman[\\s-]*(alpha|break|continuum)",
+        "\\bLy[\\s-]?(alpha|a|α)(?![a-z])",
+        "\\bLAEs?\\b",
+        "\\bLBGs?\\b",
+        "primordial\\s+galax",
+        "proto[\\s-]*clusters?",
+        "redshift\\s+frontier"
+      ],
+      "categories": [
+        "High-Redshift Galaxies and the Distant Universe"
+      ],
+      "exclude_categories": [
+        "Solar System Astronomy",
+        "Exoplanet Atmospheres and Habitability",
+        "Exoplanets and Exoplanet Formation"
+      ]
+    },
+    {
+      "key": "field",
+      "label": "Deep field",
+      "weight": 1,
+      "patterns": [
+        "deep\\s+fields?",
+        "legacy\\s+fields?",
+        "frontier\\s+fields?",
+        "\\bJADES\\b",
+        "\\bCEERS\\b",
+        "\\bPRIMER\\b",
+        "\\bUNCOVER\\b",
+        "COSMOS",
+        "GOODS",
+        "\\bHUDF\\b"
+      ],
+      "categories": []
+    }
+  ],
+  "watch_programs": [],
+  "track": {
+    "_comment": "Visit windows are fetched for programs that match LRD/AGN/High-z (score >= min_score) from these cycles, plus watch_programs.",
+    "min_score": 2,
+    "min_cycle": 3
+  },
+  "fields": [
+    {"name": "GOODS-S", "ra": 53.13, "dec": -27.8, "r": 0.35, "tokens": [ "goods[-_ ]?s", "goodss", "gds", "hudf", "xdf", "udf", "jades[-_]?gs", "gs[-_]?z\\d+", "e?cdfs", "midis", "fresco[-_]?gs" ]},
+    {"name": "GOODS-N", "ra": 189.23, "dec": 62.24, "r": 0.35, "tokens": [ "goods[-_ ]?n", "goodsn", "gdn", "jades[-_]?gn", "gn[-_]?z\\d+", "hdf[-_ ]?n", "fresco[-_]?gn" ]},
+    {"name": "COSMOS", "ra": 150.12, "dec": 2.21, "r": 1.0, "tokens": [ "cosmos\\w*", "cos[-_]?web", "cos3d" ]},
+    {"name": "UDS", "ra": 34.4, "dec": -5.2, "r": 0.6, "tokens": [ "uds", "primer[-_]?uds", "sxds" ]},
+    {"name": "EGS", "ra": 214.9, "dec": 52.88, "r": 0.5, "tokens": [ "egs", "ceers\\w*", "aegis" ]},
+    {"name": "Abell 2744", "ra": 3.58, "dec": -30.4, "r": 0.3, "tokens": [ "a2744", "abell[-_ ]?2744", "uncover", "megascience", "glass" ]},
+    {"name": "MACS J0416", "ra": 64.04, "dec": -24.07, "r": 0.15, "tokens": [ "macs[-_ ]?j?0416", "m0416" ]},
+    {"name": "MACS J0647", "ra": 101.96, "dec": 70.25, "r": 0.15, "tokens": [ "macs[-_ ]?j?0647", "m0647" ]},
+    {"name": "MACS J0717", "ra": 109.38, "dec": 37.75, "r": 0.15, "tokens": [ "macs[-_ ]?j?0717" ]},
+    {"name": "MACS J1149", "ra": 177.4, "dec": 22.4, "r": 0.15, "tokens": [ "macs[-_ ]?j?1149" ]},
+    {"name": "Abell 370", "ra": 39.97, "dec": -1.58, "r": 0.15, "tokens": [ "a370", "abell[-_ ]?370" ]},
+    {"name": "Abell S1063", "ra": 342.18, "dec": -44.53, "r": 0.15, "tokens": [ "as1063", "abell[-_ ]?s1063", "rxc?j[-_ ]?2248\\w*" ]},
+    {"name": "El Gordo", "ra": 15.72, "dec": -49.25, "r": 0.15, "tokens": [ "el[-_ ]?gordo", "act[-_ ]?cl[-_ ]?j?0102\\w*" ]},
+    {"name": "SMACS 0723", "ra": 110.83, "dec": -73.45, "r": 0.15, "tokens": [ "smacs[-_ ]?j?0723\\w*" ]},
+    {"name": "Abell 1689", "ra": 197.87, "dec": -1.34, "r": 0.15, "tokens": [ "a1689", "abell[-_ ]?1689" ]},
+    {"name": "Bullet Cluster", "ra": 104.63, "dec": -55.95, "r": 0.15, "tokens": []},
+    {"name": "NEP", "ra": 266.0, "dec": 66.3, "r": 2.5, "tokens": [ "nep", "nep[-_]?tdf", "edf[-_]?n", "nexus" ]},
+    {"name": "SSA22", "ra": 334.37, "dec": 0.29, "r": 0.2, "tokens": [ "ssa[-_ ]?22" ]}
+  ]
+}

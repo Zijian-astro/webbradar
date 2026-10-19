@@ -1,0 +1,60 @@
+name: Update data & deploy
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"   # every 6 hours (UTC)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: ["data/**"]
+
+permissions:
+  contents: write   # commit refreshed data (also keeps the scheduled workflow from being disabled for inactivity)
+  pages: write
+  id-token: write
+
+concurrency:
+  group: webbradar
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch STScI schedules, program info and MAST releases
+        # A failed source keeps its previous file, so deploy anyway and surface a warning.
+        run: python3 scripts/update_data.py || echo "::warning::Some sources failed; see data/meta.json"
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Update data $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase --autostash
+          git push
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r index.html assets config data _site/
+          rm -rf _site/data/cache
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
