@@ -24,10 +24,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Fetch STScI schedules, program info and MAST releases
-        # A failed source keeps its previous file, so deploy anyway and surface a warning.
+        # A failed or hung source keeps its previous file, so deploy anyway and surface a warning.
         run: python3 scripts/update_data.py || echo "::warning::Some sources failed; see data/meta.json"
+        timeout-minutes: 15
+        continue-on-error: true
 
       - name: Commit refreshed data
+        continue-on-error: true   # a rejected push (e.g. a concurrent commit) should not block the deploy
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
