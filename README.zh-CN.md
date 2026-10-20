@@ -7,7 +7,7 @@
 
 轻量静态网页（纯 HTML/CSS/JS，无框架、无构建）加一个零依赖的 Python 抓取脚本。部署在 GitHub Pages 上，每 6 小时自动更新。
 
-在线地址：<https://zijian-astro.github.io/webbradar/>
+在线地址：<https://jwst.zijianz.space/>
 
 ## 功能
 

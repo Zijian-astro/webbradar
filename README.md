@@ -7,7 +7,7 @@ Out of the box it follows high-redshift galaxies, AGN / black holes and Little R
 
 A lightweight static page (plain HTML/CSS/JS, no framework, no build step) plus a dependency-free Python fetcher. It is deployed on GitHub Pages and refreshes itself every 6 hours.
 
-Live site: <https://zijian-astro.github.io/webbradar/>
+Live site: <https://jwst.zijianz.space/>
 
 ## Features
 
