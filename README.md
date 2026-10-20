@@ -91,5 +91,3 @@ scripts/update_data.py   fetches STScI / MAST into data/*.json (standard library
 data/*.json              generated data; data/cache/ holds fetch caches (not published)
 .github/workflows/       fetches every 6 hours and deploys to GitHub Pages
 ```
-
-The design follows the JWST tools on [lmytime.com/software](https://lmytime.com/software) (MSAtlas, iNRS and others).

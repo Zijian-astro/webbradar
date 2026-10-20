@@ -91,5 +91,3 @@ scripts/update_data.py   抓取 STScI / MAST 并生成 data/*.json（仅标准�
 data/*.json              生成的数据；data/cache/ 为抓取缓存（不发布到网页）
 .github/workflows/       每 6 小时抓取并部署到 GitHub Pages
 ```
-
-界面风格参考了 [lmytime.com/software](https://lmytime.com/software) 上的 JWST 工具（MSAtlas、iNRS 等）。
