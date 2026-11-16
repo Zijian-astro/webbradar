@@ -1,9 +1,9 @@
 {
- "generated": "2026-11-16T07:16:06Z",
+ "generated": "2026-11-16T22:30:14Z",
  "steps": {
   "schedule": {
    "ok": true,
-   "at": "2026-11-16T07:16:06Z",
+   "at": "2026-11-16T22:30:14Z",
    "n": 208,
    "files": [
     "20261026_report_20261031.txt",
@@ -14,32 +14,28 @@
   },
   "catalog": {
    "ok": true,
-   "at": "2026-11-16T07:16:06Z",
+   "at": "2026-11-16T22:30:14Z",
    "n": 1982,
    "fetched": "2026-11-16T07:16:06Z"
   },
   "releases": {
-   "ok": false,
-   "at": "2026-11-15T07:11:28Z",
-   "n": 613,
-   "error": "MAST: ERROR Request failed.  If this problem persists, please notify archive[at]stsci.edu.'",
-   "failed_at": "2026-11-16T07:16:06Z"
+   "ok": true,
+   "at": "2026-11-16T22:30:14Z",
+   "n": 636
   },
   "watch": {
    "ok": true,
-   "at": "2026-11-16T07:16:06Z",
+   "at": "2026-11-16T22:30:14Z",
    "tracked": 230,
-   "visits": 990
+   "visits": 991
   },
   "programs": {
    "ok": true,
-   "at": "2026-11-16T07:16:06Z",
-   "n": 429
+   "at": "2026-11-16T22:30:14Z",
+   "n": 430
   }
  },
- "errors": [
-  "releases: MAST: ERROR Request failed.  If this problem persists, please notify archive[at]stsci.edu.'"
- ],
+ "errors": [],
  "sources": {
   "schedule": "https://www.stsci.edu/jwst/science-execution/observing-schedules",
   "approved": "https://www.stsci.edu/jwst/science-execution/approved-programs",
