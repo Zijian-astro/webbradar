@@ -1,9 +1,9 @@
 {
- "generated": "2026-11-20T07:44:23Z",
+ "generated": "2026-11-20T20:43:11Z",
  "steps": {
   "schedule": {
    "ok": true,
-   "at": "2026-11-20T07:44:23Z",
+   "at": "2026-11-20T20:43:11Z",
    "n": 244,
    "files": [
     "20261103_report_20261103.txt",
@@ -14,28 +14,34 @@
   },
   "catalog": {
    "ok": true,
-   "at": "2026-11-20T07:44:23Z",
+   "at": "2026-11-20T20:43:11Z",
    "n": 1982,
    "fetched": "2026-11-16T07:16:06Z"
   },
   "releases": {
    "ok": true,
-   "at": "2026-11-20T07:44:23Z",
-   "n": 654
+   "at": "2026-11-20T20:43:11Z",
+   "n": 611
   },
   "watch": {
    "ok": true,
-   "at": "2026-11-20T07:44:23Z",
+   "at": "2026-11-20T20:43:11Z",
    "tracked": 231,
-   "visits": 990
+   "visits": 989
   },
   "programs": {
    "ok": true,
-   "at": "2026-11-20T07:44:23Z",
-   "n": 435
+   "at": "2026-11-20T20:43:11Z",
+   "n": 432
   }
  },
- "errors": [],
+ "errors": [
+  "visit status: https://www.stsci.edu/jwst-program-info/visits/?program=11192&download= -> <urlopen error [Errno 111] Connection refused>",
+  "visit status: https://www.stsci.edu/jwst-program-info/visits/?program=11171&download= -> <urlopen error [Errno 111] Connection refused>",
+  "visit status: https://www.stsci.edu/jwst-program-info/visits/?program=11245&download= -> <urlopen error timed out>",
+  "visit status: https://www.stsci.edu/jwst-program-info/visits/?program=10675&download= -> <urlopen error timed out>",
+  "visit status: https://www.stsci.edu/jwst-program-info/visits/?program=12146&download= -> <urlopen error [Errno 111] Connection refused>"
+ ],
  "sources": {
   "schedule": "https://www.stsci.edu/jwst/science-execution/observing-schedules",
   "approved": "https://www.stsci.edu/jwst/science-execution/approved-programs",
