@@ -1,9 +1,9 @@
 {
- "generated": "2026-11-21T19:46:45Z",
+ "generated": "2026-11-22T07:26:53Z",
  "steps": {
   "schedule": {
    "ok": true,
-   "at": "2026-11-21T19:46:45Z",
+   "at": "2026-11-22T07:26:53Z",
    "n": 244,
    "files": [
     "20261103_report_20261103.txt",
@@ -14,30 +14,28 @@
   },
   "catalog": {
    "ok": true,
-   "at": "2026-11-21T19:46:45Z",
+   "at": "2026-11-22T07:26:53Z",
    "n": 1982,
    "fetched": "2026-11-16T07:16:06Z"
   },
   "releases": {
    "ok": true,
-   "at": "2026-11-21T19:46:45Z",
-   "n": 615
+   "at": "2026-11-22T07:26:53Z",
+   "n": 620
   },
   "watch": {
    "ok": true,
-   "at": "2026-11-21T19:46:45Z",
+   "at": "2026-11-22T07:26:53Z",
    "tracked": 231,
-   "visits": 989
+   "visits": 988
   },
   "programs": {
    "ok": true,
-   "at": "2026-11-21T19:46:45Z",
-   "n": 432
+   "at": "2026-11-22T07:26:53Z",
+   "n": 431
   }
  },
- "errors": [
-  "visit status: https://www.stsci.edu/jwst-program-info/visits/?program=11856&download= -> <urlopen error timed out>"
- ],
+ "errors": [],
  "sources": {
   "schedule": "https://www.stsci.edu/jwst/science-execution/observing-schedules",
   "approved": "https://www.stsci.edu/jwst/science-execution/approved-programs",
